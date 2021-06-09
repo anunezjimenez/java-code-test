@@ -1,22 +1,13 @@
-package main.java;
-
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CodeTest {
     public static void main(String[] args) {
@@ -106,24 +97,11 @@ public class CodeTest {
     }
 
     public static void writeContentsToConsole() {
-    	Path path = Paths.get("prueba.txt");
+    	Path path = Paths.get("src/resources/test.txt");
     	
 		try {
-//			SeekableByteChannel inputChannel = Files.newByteChannel(path, StandardOpenOption.READ);
-//			
-//			ByteBuffer buffer = ByteBuffer.allocate(8192);
-//			
-//	        while (inputChannel.read(buffer) >= 0) {
-//	        	buffer.flip();
-//	            
-//	        	buffer.clear();
-//	        }
-	        
-//			Stream<String> fileStream = Files.lines(path);
-//			fileStream.forEach(System.out::println);
 			Files.lines(path).forEach(System.out::println);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
