@@ -1,5 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /*
  *   Please code the tests in the format of reverseArray_returnsExpectedResult. This is an example of how we write our tests at Cardano.
@@ -44,8 +46,20 @@ public class CodeTestSpec {
     }
 
     @Test
+//    @Test(expected = IllegalArgumentException.class)
     public void handleInvalidArgument_returnsExpectedResult() {
-
+    	// arrange
+        final String EXPECTED = "Value too big (100)";
+    	
+    	try {
+    		// act
+            CodeTest.handleInvalidArgument();
+             
+            fail();
+        } catch (IllegalArgumentException ex) {
+        	// assert
+            assertEquals(EXPECTED, ex.getMessage());
+        }
     }
 
     @Test

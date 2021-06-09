@@ -107,7 +107,13 @@ public class CodeTest {
     }
 
     public static void handleInvalidArgument() {
-        // add code here
+        Integer argInt = 100;
+        
+        if (argInt > 99) {
+        	throw new IllegalArgumentException("Value too big (" + argInt + ")");
+        } else {
+        	System.out.println("The argument is: " + argInt);
+        }
     }
 
     public static void puzzle() {
