@@ -1,0 +1,32 @@
+1.	Create a query to return the unique rows in a table
+
+select distinct * from table_name;
+
+
+2.	Write a command to insert values into a table
+
+If the table called “customer” has the following columns:
+
+customer_id : number
+customer_name : varchar2(100)
+telephone : varchar2(10)
+city : varchar2(50)
+
+The insert command would be:
+
+insert into customer (customer_id, customer_name, telephone, city)
+values (12345, ‘John Smith’, ‘601123456’, ‘Malaga’);
+
+
+3.	Create a query that joins two tables together. Note, all rows from the first table must be in the result-set (e.g. given customer and order tables, return all customers and any orders for each customer)
+
+Using the above table “customer” and the table “order” defined as follows:
+
+order_id : number
+ustomer_id : number (foreign key to customer_id in table “customer”)
+order_date : date
+
+The query would be as follows:
+
+select customer.customer_id, customer.customer_name, order.order_id, order.order_date
+from customer left join order on customer.customer_id = order.customer_id;
