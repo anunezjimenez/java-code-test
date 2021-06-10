@@ -77,9 +77,10 @@ public class CodeTestSpec {
     	System.setOut(new PrintStream(systemOutRedirected));
     	CodeTest.writeContentsToConsole();
     	System.setOut(originalSystemOut);
+    	final String actual = systemOutRedirected.toString();
     	
     	// assert
-    	assertEquals(EXPECTED, systemOutRedirected.toString());
+    	assertEquals(EXPECTED, actual);
     }
 
     @Test
@@ -92,8 +93,9 @@ public class CodeTestSpec {
     		CodeTest.handleInvalidArgument();
     		fail();
         } catch (IllegalArgumentException ex) {
+        	final String actual = ex.getMessage();
         // assert
-        	assertEquals(EXPECTED, ex.getMessage());
+        	assertEquals(EXPECTED, actual);
         }
     }
     
@@ -108,8 +110,9 @@ public class CodeTestSpec {
     	System.setOut(new PrintStream(systemOutRedirected));
     	CodeTest.puzzle();
     	System.setOut(originalSystemOut);
+    	final String actual = systemOutRedirected.toString();
     	
     	// assert
-    	assertEquals(EXPECTED, systemOutRedirected.toString());
+    	assertEquals(EXPECTED, actual);
     }
 }
