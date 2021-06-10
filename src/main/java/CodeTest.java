@@ -27,7 +27,9 @@ public class CodeTest {
 //        Integer z = f.apply(2);
 //        System.out.println(z);
         
-        writeContentsToConsole();
+//        writeContentsToConsole();
+        
+        puzzle();
     }
 
     public static String[] reverseArray(String[] input) {
@@ -110,13 +112,26 @@ public class CodeTest {
         Integer argInt = 100;
         
         if (argInt > 99) {
-        	throw new IllegalArgumentException("Value too big (" + argInt + ")");
+        	throw new IllegalArgumentException("Integer too big (" + argInt + ")");
         } else {
         	System.out.println("The argument is: " + argInt);
         }
     }
 
     public static void puzzle() {
-        // add code here
+        Integer[] arrayOfInt = {1, 2, 3, 5, 4};
+        Integer prevInt = null;
+        
+        for (Integer currentInt : arrayOfInt) {
+        	
+        	if (currentInt == prevInt) {
+        		System.out.print(currentInt + ",'Snap'");
+        		break;
+        	} else {
+        		prevInt = currentInt;
+        		System.out.print(currentInt + ",");
+        	}
+        }
+        
     }
 }

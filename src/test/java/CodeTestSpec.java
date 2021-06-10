@@ -49,19 +49,18 @@ public class CodeTestSpec {
 //    @Test(expected = IllegalArgumentException.class)
     public void handleInvalidArgument_returnsExpectedResult() {
     	// arrange
-        final String EXPECTED = "Value too big (100)";
+        final String EXPECTED = "Integer too big (100)";
     	
     	try {
-    		// act
-            CodeTest.handleInvalidArgument();
-             
-            fail();
+    	// act
+    		CodeTest.handleInvalidArgument();
+    		fail();
         } catch (IllegalArgumentException ex) {
-        	// assert
-            assertEquals(EXPECTED, ex.getMessage());
+        // assert
+        	assertEquals(EXPECTED, ex.getMessage());
         }
     }
-
+    
     @Test
     public void puzzle_returnsExpectedResult() {
 
