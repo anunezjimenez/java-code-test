@@ -11,33 +11,53 @@ import java.util.stream.Collectors;
 
 public class CodeTest {
     public static void main(String[] args) {
-        System.out.println("Please replace this with calls to all completed tests.");
-        String[] input = {"aa", "aBCs", "PP", "klmn"};
-//        String [] input = null;
-//        String[] inversa = reverseArray(input);
-//        String[] inversa = uppercaseArray(input);
-//        for (String cadena : inversa) {
-//        	System.out.println(cadena);
-//        }
+                
+        String[] inputArray = {"aa", "aBCs", "PP", "klmn"};
+        String text = "the cat	jumped   over the mat ";
+        String wordToFind = "the";
         
-//        System.out.println(findWordCount("the cat	jumped   over the mat ", "the"));
-//        System.out.println(findWordCount(null, "the"));
         
-//        Function<Integer, Integer> f = composeU(x -> x + 1, x -> x * 2);
-//        Integer z = f.apply(2);
-//        System.out.println(z);
+        System.out.println("1. Execution of 'reverseArray' on {\"aa\", \"aBCs\", \"PP\", \"klmn\"}:");
+        String[] reverse = reverseArray(inputArray);
+        Arrays.stream(reverse).forEach(x -> System.out.print(x + ",  "));
         
-//        writeContentsToConsole();
         
+        System.out.println("\n\n2. Execution of 'uppercaseArray' on {\"aa\", \"aBCs\", \"PP\", \"klmn\"}:");
+        String[] uppercase = uppercaseArray(inputArray);
+        Arrays.stream(uppercase).forEach(x -> System.out.print(x + ",  "));
+        
+        
+        System.out.println("\n\n3. Execution of 'findWordCount(\"" + text + "\", \"" + wordToFind + "\")':");
+        System.out.println(wordToFind + ": " + findWordCount(text, wordToFind));
+        
+        
+        System.out.println("\n4. Execution of 'composeU' on f(x) = x+1 and f(x) = x*2, with x = 2:");
+        Function<Integer, Integer> f = composeU(x -> x + 1, x -> x * 2);
+        Integer z = f.apply(2);
+        System.out.println(z);
+        
+        
+        System.out.println("\n5. Execution of 'writeContentsToConsole' on file 'test.txt':");
+        writeContentsToConsole();
+        
+        
+        System.out.println("\n6. Execution of 'handleInvalidArgument':");
+        try {
+        	handleInvalidArgument();
+        } catch (IllegalArgumentException iae) {
+        	System.out.println(iae.getMessage());
+        }
+        
+        
+        System.out.println("\n7. Execution of 'puzzle' on {1, 2, 3, 3, 4}:");
         puzzle();
     }
-
+    
     public static String[] reverseArray(String[] input) {
     	String[] reverse = null;
     	Optional<String[]> inputOptional = Optional.ofNullable(input);
     	
     	if (inputOptional.isPresent()) {
-//    	if (input != null) {
     		List<String> inputAsList = Arrays.asList(inputOptional.get());
     		Collections.reverse(inputAsList);
     		reverse = (String[]) inputAsList.toArray();
@@ -53,7 +73,6 @@ public class CodeTest {
     		uppercase = Arrays.stream(input)
         			.map(String::toUpperCase)
         			.toArray(String[]::new);
-//    		List<String> inputAsList = Arrays.asList(input);inputAsList.replaceAll(String::toUpperCase);
     	}
         
         return uppercase;
@@ -62,23 +81,10 @@ public class CodeTest {
     public static int findWordCount(String text, String wordToFind) {
     	int number = 0;
     	
-//    	if (text != null && wordToFind != null) {
-//    		Stream<String> textAsStream = Arrays.stream(text.split("\\s+"));
-//            Map<Object, Long> wordsMap = textAsStream.collect(Collectors.groupingBy(x -> x, Collectors.counting()));
-//            Long numberLong = wordsMap.get(wordToFind);
-//            
-//            if (numberLong != null) {
-//            	number = numberLong.intValue();
-//            }
-//    	}
-    	
     	Optional<String> optionalText = Optional.ofNullable(text);
     	Optional<String> optionalWordToFind = Optional.ofNullable(wordToFind);
     	
     	if (optionalText.isPresent() && optionalWordToFind.isPresent()) {
-//    		Stream<String> textAsStream = Arrays.stream(text.split("\\s+"));
-//    		Map<Object, Long> wordsMap = textAsStream.collect(Collectors.groupingBy(x -> x, Collectors.counting()));
-//    		Optional<Long> optionalLong = Optional.ofNullable(wordsMap.get(optionalWordToFind.get()));
             
             Optional<Long> optionalLong = Optional.ofNullable(
 	            Arrays.stream(text.split("\\s+"))
@@ -119,7 +125,7 @@ public class CodeTest {
     }
 
     public static void puzzle() {
-        Integer[] arrayOfInt = {1, 2, 3, 5, 4};
+        Integer[] arrayOfInt = {1, 2, 3, 3, 4};
         Integer prevInt = null;
         
         for (Integer currentInt : arrayOfInt) {
